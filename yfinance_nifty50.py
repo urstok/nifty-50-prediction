@@ -40,22 +40,33 @@ forecast_df = pd.DataFrame({
     'Forecasted Prices': forecasted_values
 })
 
-# Add disclaimer message
-disclaimer = """
+# Add license and disclaimer message
+license_and_disclaimer = """
 -------------------------------------------------
-Disclaimer: These are ARIMA model predictions and do not guarantee future results.
+### License and Disclaimer
+
+#### License
+The content and information provided in this document are intended solely for educational and informational purposes. This document is not for commercial use and is not to be shared publicly. You may use this document for personal, non-commercial purposes only.
+
+#### Disclaimer
+The information contained herein does not constitute financial advice, investment advice, trading advice, or any other sort of advice and should not be treated as such. The content provided is for educational and informational purposes only. Always seek the advice of a qualified financial advisor or other professional regarding any financial decisions.
+
+The author(s) of this document make no representations or warranties, express or implied, as to the accuracy, completeness, or suitability of the information provided herein. The author(s) will not be held liable for any errors or omissions, or any losses, injuries, or damages arising from the use of this information.
+
+Use this information at your own risk.
+-------------------------------------------------
 """
 
-# Save forecasted prices with disclaimer to CSV file
+# Save forecasted prices with license and disclaimer to CSV file
 output_file = 'forecasted_prices_with_disclaimer.csv'
 with open(output_file, 'w') as f:
-    f.write(disclaimer.strip() + '\n\n')
+    f.write(license_and_disclaimer.strip() + '\n\n')
     forecast_df.to_csv(f, index=False)
 
-# Print forecasted values and disclaimer
+# Print forecasted values and license/disclaimer
 print("Forecasted Prices for Next 10 Days:")
 print(forecast_df)
-print(disclaimer)
+print(license_and_disclaimer)
 
 # Plot forecasted prices
 plt.figure(figsize=(12, 6))
