@@ -1,12 +1,13 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import yfinance as yf
-from statsmodels.graphics.tsaplots import plot_pacf
 from statsmodels.tsa.arima.model import ARIMA
-from sklearn.metrics import mean_absolute_error, mean_squared_error
-from statsmodels.stats.diagnostic import acorr_ljungbox
 import datetime
+from tabulate import tabulate
+import warnings
+
+# Suppress all warnings (not recommended unless you know the implications)
+warnings.filterwarnings("ignore")
 
 # Define the symbol and symbol name
 symbol = "^NSEI"
@@ -53,21 +54,23 @@ forecast_df = pd.DataFrame({
     'Forecasted Prices': forecasted_values
 })
 
-# Add license and disclaimer message
+# Add license and disclaimer message with specific headings in bold
 license_and_disclaimer = """
 -------------------------------------------------
-### License and Disclaimer
+### **License and Disclaimer**
 
-#### License
-The content and information provided in this document are intended solely for educational and informational purposes. 
+#### **License**
+The content and information provided in this document are intended solely 
+for educational and informational purposes. 
 This document is not for commercial use and is not to be shared publicly. 
 You may use this document for personal, non-commercial purposes only.
 
-#### Disclaimer
-The information contained herein does not constitute financial advice, investment advice, trading advice, 
-or any other sort of advice and should not be treated as such. 
+#### **Disclaimer**
+The information contained herein does not constitute financial advice, investment advice, 
+trading advice, or any other sort of advice and should not be treated as such. 
 The content provided is for educational and informational purposes only. 
-Always seek the advice of a qualified financial advisor or other professional regarding any financial decisions.
+Always seek the advice of a qualified financial advisor or 
+other professional regarding any financial decisions.
 
 The author(s) of this document make no representations or warranties, express or implied, 
 as to the accuracy, completeness, or suitability of the information provided herein. 
@@ -78,27 +81,7 @@ Use this information at your own risk.
 -------------------------------------------------
 """
 
-# Save forecasted prices with license and disclaimer to CSV file
-output_file = 'forecasted_prices_with_disclaimer.csv'
-with open(output_file, 'w') as f:
-    # Write the license and disclaimer
-    f.write(license_and_disclaimer.strip() + '\n\n')
-    # Write the forecasted prices
-    forecast_df.to_csv(f, index=False)
-
 # Print forecasted values and license/disclaimer
-print("Forecasted Prices for Next 10 Days:")
-print(forecast_df)
+print("NIFTY 50 Forecasted Prices for Next 10 Days:")
+print(tabulate(forecast_df, headers='keys', tablefmt='grid', showindex=False))
 print(license_and_disclaimer)
-
-# Plot forecasted prices
-plt.figure(figsize=(12, 6))
-plt.plot(prices, label='Historical Prices')
-plt.plot(forecast_dates, forecasted_values, label='Forecasted Prices', color='red', marker='o')
-plt.title("Forecasted Stock Prices for Next 10 Trading Days")
-plt.xlabel("Date")
-plt.ylabel("Closing Prices")
-plt.legend()
-plt.grid(True)
-plt.tight_layout()
-plt.show()
