@@ -69,8 +69,10 @@ or any other sort of advice and should not be treated as such.
 The content provided is for educational and informational purposes only. 
 Always seek the advice of a qualified financial advisor or other professional regarding any financial decisions.
 
-The author(s) of this document make no representations or warranties, express or implied, as to the accuracy, completeness, or suitability of the information provided herein. 
-The author(s) will not be held liable for any errors or omissions, or any losses, injuries, or damages arising from the use of this information.
+The author(s) of this document make no representations or warranties, express or implied, 
+as to the accuracy, completeness, or suitability of the information provided herein. 
+The author(s) will not be held liable for any errors or omissions, 
+or any losses, injuries, or damages arising from the use of this information.
 
 Use this information at your own risk.
 -------------------------------------------------
